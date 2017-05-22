@@ -22,6 +22,13 @@ var ViewModal = function() {
 		}
 	},this);
 
+	this.nickNames = [
+	{name: 'Tabtab'},
+	{name: 'T-Bone'},
+	{name: 'Mr.T'},
+	{name:'Tabitha Tab Tabby Catty Cat'}
+	];
+
 }
 
 // apply Bindings

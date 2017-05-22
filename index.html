@@ -14,6 +14,9 @@
         <img src="" alt="cute cat" data-bind="click: incrementCounter, attr: {src: imgSrc}">
 
     </div>
+    <ul data-bind="foreach: nickNames">
+        <li data-bind="text: name"></li>
+    </ul>
     <!-- 包含框架 -->
     <script src="js/lib/knockout-3.2.0.js"></script>
     <!-- 自己写的js -->
