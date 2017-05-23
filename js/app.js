@@ -1,9 +1,35 @@
+var initialCats = [
+	{
+		clickCount: 0,
+		name: 'Tabby',
+		imgSrc: 'img/1413379559_412a540d29_z.jpg',
+		nickNames: ['Tabtab', 'T-Bone']
+	},
+	{
+		clickCount: 0,
+		name: 'Tiger',
+		imgSrc: 'img/22252709_010df3379e_z.jpg',
+		nickNames: ['Mr.T']
+	},
+	{
+		clickCount: 0,
+		name: 'Scaredy',
+		imgSrc: 'img/4154543904_6e2428c421_z.jpg',
+		nickNames: ['Tabitha Tab']
+	},
+	{
+		clickCount: 0,
+		name: 'Shadow',
+		imgSrc: 'img/434164568_fea0ad4013_z.jpg',
+		nickNames: ['Tabby Catty Cat']
+	}
+];
 //分离Modal
-var Cat = function() {
+var Cat = function(data) {
 	// Modal,也就是数据
-	this.clickCount = ko.observable(0);
-	this.name = ko.observable('Tabby');
-	this.imgSrc = ko.observable('img/434164568_fea0ad4013_z.jpg');
+	this.clickCount = ko.observable(data.clickCount);
+	this.name = ko.observable(data.name);
+	this.imgSrc = ko.observable(data.imgSrc);
 	this.fullName = ko.computed(function() {
 		if(this.clickCount() < 10) {
 			return 'NewBorn';
@@ -18,19 +44,24 @@ var Cat = function() {
 		}
 	},this);
 
-	this.nickNames = [
-		{name: 'Tabtab'},
-		{name: 'T-Bone'},
-		{name: 'Mr.T'},
-		{name:'Tabitha Tab Tabby Catty Cat'}
-	];
+	this.nickNames = data.nickNames;
 }
 var ViewModal = function() {
+	var self = this;
+	this.catList = ko.observableArray([]);
+	initialCats.forEach(function(catItem){
+		self.catList.push( new Cat(catItem) );
+	});
 
-	this.currentCat = ko.observable( new Cat() );
+	this.currentCat = ko.observable( this.catList()[0]);
 	this.incrementCounter = function() {
 		this.clickCount(this.clickCount() + 1);
 	};
+
+
+	// this.changeCurrentCat = function(index) {
+	// 	self.currentCat(self.catList()[index]);
+	// };
 
 
 };
