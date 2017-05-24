@@ -59,9 +59,9 @@ var ViewModal = function() {
 	};
 
 
-	// this.changeCurrentCat = function(index) {
-	// 	self.currentCat(self.catList()[index]);
-	// };
+	this.changeCurrentCat = function(catCurrent) {
+		self.currentCat(catCurrent);
+	};
 
 
 };
